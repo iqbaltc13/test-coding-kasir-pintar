@@ -17,7 +17,7 @@ func main() {
 		fmt.Println(err)
 	}
 
-	url := "https://dev.nicepay.co.id/nicepay/direct/v2/registration"
+	url := "https://dev.nicepay.co.id/nicepay/direct/v2/inquiry"
 	//request method
 	method := "POST"
 
