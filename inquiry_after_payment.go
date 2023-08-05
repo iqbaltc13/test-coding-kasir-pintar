@@ -10,7 +10,7 @@ import (
 
 func main() {
 	// read in the contents of the localfile.data
-	data, err := ioutil.ReadFile("params_registration.json")
+	data, err := ioutil.ReadFile("params_inquiry_after_payment.json")
 	// if our program was unable to read the file
 	// print out the reason why it can't
 	if err != nil {
@@ -46,7 +46,7 @@ func main() {
 	}
 	//fmt.Println(string(body))
 
-	err = ioutil.WriteFile("response_registration.json", body, 0777)
+	err = ioutil.WriteFile("response_inquiry_after_payment.json", body, 0777)
 	// handle this error
 	if err != nil {
 		// print it out

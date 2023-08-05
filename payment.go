@@ -10,19 +10,21 @@ import (
 
 func main() {
 	// read in the contents of the localfile.data
-	data, err := ioutil.ReadFile("params_inquiry_before_payment.json")
+	data, err := ioutil.ReadFile("params_payment.txt")
 	// if our program was unable to read the file
 	// print out the reason why it can't
 	if err != nil {
 		fmt.Println(err)
 	}
 
-	url := "https://dev.nicepay.co.id/nicepay/direct/v2/inquiry"
+	url := "https://dev.nicepay.co.id/nicepay/direct/v2/payment?"
+
 	//request method
 	method := "POST"
 
 	var jsonData = []byte(data)
-
+	url += string(jsonData)
+	//fmt.Println(url)
 	client := &http.Client{}
 	req, errRequest := http.NewRequest(method, url, bytes.NewBuffer(jsonData))
 	// set HTTP request header Content-Type
@@ -46,7 +48,7 @@ func main() {
 	}
 	//fmt.Println(string(body))
 
-	err = ioutil.WriteFile("response_inquiry_before_payment.json", body, 0777)
+	err = ioutil.WriteFile("response_payment.json", body, 0777)
 	// handle this error
 	if err != nil {
 		// print it out
